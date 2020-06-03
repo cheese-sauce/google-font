@@ -1,4 +1,5 @@
 {
   "name": "google-font",
   "component": "./component.vue",
+  "packages": []
 }
