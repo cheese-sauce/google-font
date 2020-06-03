@@ -13,7 +13,7 @@ module.exports = {
     props: {
         value: {
             default: '',
-            type: [String],
+            type: [String, Object],
         },
         meta: Object,
     }
