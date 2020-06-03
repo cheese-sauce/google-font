@@ -3,7 +3,7 @@
         <h3 v-if="meta.label">{{ meta.label }}</h3>
         <md-field>
             <label>Font</label>
-            <md-input :v-model="value" @input="$emit('input', $event)"></md-input>
+            <md-input :value="value" @input="$emit('input', $event)"></md-input>
         </md-field>
     </div>
 </template>
