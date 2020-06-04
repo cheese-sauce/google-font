@@ -19,7 +19,7 @@ module.exports = {
         meta: Object,
     },
     mounted: function() {
-        console.log('mounted');
+        console.log(node_modules);
         node_modules['axios'].get('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyC_RgpPbpNDPSSaBHXMr5XkzKgCm4S9Bys')
             .then(function (response) {
                 // handle success
