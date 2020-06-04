@@ -9,6 +9,7 @@
 </template>
 
 <script>
+
 module.exports = {
     props: {
         value: {
@@ -16,8 +17,24 @@ module.exports = {
             type: [String, Object],
         },
         meta: Object,
+    },
+    mounted: function() {
+        axios.get('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyC_RgpPbpNDPSSaBHXMr5XkzKgCm4S9Bys')
+            .then(function (response) {
+                // handle success
+                console.log(response);
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+            .finally(function () {
+                // always executed
+            });
     }
 };
+
+
 </script>
 
 <style>
