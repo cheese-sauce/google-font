@@ -20,8 +20,8 @@ module.exports = {
     },
     mounted: function() {
         console.log(node_modules);
-        const axios = node_modules['axios'];
-        axios.get('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyC_RgpPbpNDPSSaBHXMr5XkzKgCm4S9Bys')
+        //const axios = node_modules['axios'];
+        node_modules['axios'].get('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyC_RgpPbpNDPSSaBHXMr5XkzKgCm4S9Bys')
             .then(function (response) {
                 // handle success
                 console.log(response);
