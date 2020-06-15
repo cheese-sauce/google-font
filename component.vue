@@ -6,6 +6,7 @@
             <md-autocomplete
                     :value="value"
                     @input="$emit('input', $event)"
+                    :md-options="fonts"
                     @md-changed="getFonts"
                     @md-opened="getFonts"
                     md-layout="box">
