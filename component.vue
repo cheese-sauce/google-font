@@ -27,26 +27,10 @@ module.exports = {
         },
         meta: Object,
     },
-    data: () => ({
+    data: {
        fontList: undefined,
        fonts: [],
-    }),
-/*    mounted: function() {
-        node_modules['axios'].get(`https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyC_RgpPbpNDPSSaBHXMr5XkzKgCm4S9Bys`)
-            .then(function (response) {
-                // handle success
-
-                this.fontList = response.data.items;
-                console.log(this.fontList);
-            })
-            .catch(function (error) {
-                // handle error
-                console.log(error);
-            })
-            .finally(function () {
-                // always executed
-            });
-    },*/
+    },
     methods: {
         async getFonts (searchTerm) {
             if (!this.fontList) {
