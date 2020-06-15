@@ -3,12 +3,22 @@
         <h3 v-if="meta.label">{{ meta.label }}</h3>
         <md-field>
             <label>Font</label>
-            <md-input :value="value" @input="$emit('input', $event)"></md-input>
+            <md-autocomplete
+                    :value="value"
+                    @input="$emit('input', $event)"
+                    @md-changed="getFonts"
+                    @md-opened="getFonts"
+                    md-layout="box">
+                <label>Search...</label>
+                <template slot="md-autocomplete-item" slot-scope="{ item }">{{ item.family }}</template>
+            </md-autocomplete>
         </md-field>
     </div>
 </template>
 
 <script>
+
+import {getFonts} from "./font.service";
 
 module.exports = {
     props: {
@@ -18,22 +28,27 @@ module.exports = {
         },
         meta: Object,
     },
+    data: () => ({
+       fontList: [],
+       fonts: [],
+    }),
     mounted: function() {
-        console.log(node_modules);
-        //const axios = node_modules['axios'];
-        node_modules['axios'].get('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyC_RgpPbpNDPSSaBHXMr5XkzKgCm4S9Bys')
-            .then(function (response) {
-                // handle success
-                console.log(response);
-            })
-            .catch(function (error) {
-                // handle error
-                console.log(error);
-            })
-            .finally(function () {
-                // always executed
+        this.fontList = getFonts();
+    },
+    methods: {
+        getFonts (searchTerm) {
+            this.fonts = new Promise(resolve => {
+                if (!searchTerm) {
+                    resolve(this.fontList)
+                } else {
+                    const term = searchTerm.toLowerCase();
+                    resolve(this.fontList.filter(({family}) => family.toLowerCase().includes(term)));
+                }
             });
-    }
+        }
+    },
+
+
 };
 
 
