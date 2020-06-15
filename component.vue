@@ -28,7 +28,7 @@ module.exports = {
         meta: Object,
     },
     data: () => ({
-       fontList: [],
+       fontList: undefined,
        fonts: [],
     }),
     methods: {
