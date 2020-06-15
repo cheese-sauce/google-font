@@ -37,7 +37,7 @@ module.exports = {
         this.fontList = node_modules['axios'].get(`https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyC_RgpPbpNDPSSaBHXMr5XkzKgCm4S9Bys`)
             .then(function (response) {
                 // handle success
-                console.log(response);
+                console.log(response.data.items);
                 this.fontList = response.data.items;
             })
             .catch(function (error) {
@@ -50,6 +50,7 @@ module.exports = {
     },
     methods: {
         getFonts (searchTerm) {
+            console.log(this.fontList);
             this.fonts = new Promise(resolve => {
                 if (!searchTerm) {
                     resolve(this.fontList)
