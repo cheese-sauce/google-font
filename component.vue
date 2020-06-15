@@ -32,32 +32,32 @@ module.exports = {
        fonts: [],
     }),
     methods: {
-        async getFonts (searchTerm) {
-            if (!this.fontList) {
-                console.log('getting fonts');
-                this.fontList = await node_modules['axios'].get(`https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyC_RgpPbpNDPSSaBHXMr5XkzKgCm4S9Bys`)
-                    .then(function (response) {
-                        // handle success
-                        console.log(this.fontList);
-                        return response.data.items;
-
-                    })
-                    .catch(function (error) {
-                        // handle error
-                        console.log(error);
-                    })
-                    .finally(function () {
-                        // always executed
-                    });
-            }
-            console.log(this.fontList);
+        getFonts (searchTerm) {
             this.fonts = new Promise(resolve => {
-                if (!searchTerm) {
-                    resolve(this.fontList)
-                } else {
-                    const term = searchTerm.toLowerCase();
-                    resolve(this.fontList.filter(({family}) => family.toLowerCase().includes(term)));
-                }
+                window.setTimeout(async() => {
+                    if (!this.fontList) {
+                        console.log('getting fonts');
+                        this.fontList = await node_modules['axios'].get(`https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyC_RgpPbpNDPSSaBHXMr5XkzKgCm4S9Bys`)
+                            .then(function (response) {
+                                // handle success
+                                return response.data.items;
+                            })
+                            .catch(function (error) {
+                                // handle error
+                                console.log(error);
+                            })
+                            .finally(function () {
+                                // always executed
+                            });
+                    }
+                    if (!searchTerm) {
+                        resolve(this.fontList)
+                    } else {
+                        const term = searchTerm.toLowerCase();
+                        resolve(this.fontList.filter(({family}) => family.toLowerCase().includes(term)));
+                    }
+                }, 1000);
+
             });
         }
     },
