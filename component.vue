@@ -51,7 +51,7 @@ module.exports = {
     },
     methods: {
         getFonts (searchTerm) {
-            console.log(this.fontLits)
+            console.log(this.fontList);
             this.fonts = new Promise(resolve => {
                 if (!searchTerm) {
                     resolve(this.fontList)
