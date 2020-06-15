@@ -28,7 +28,7 @@ module.exports = {
         meta: Object,
     },
     data: () => ({
-       fontList: undefined,
+       fontList: [],
        fonts: [],
     }),
     methods: {
@@ -38,8 +38,9 @@ module.exports = {
                 await node_modules['axios'].get(`https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyC_RgpPbpNDPSSaBHXMr5XkzKgCm4S9Bys`)
                     .then(function (response) {
                         // handle success
-                        const obj = {...response};
-                        this.fontList = obj.data.items;
+                        response.data.items.forEach((value) => {
+                            this.fontList.add(value);
+                        });
                         console.log(this.fontList);
                     })
                     .catch(function (error) {
