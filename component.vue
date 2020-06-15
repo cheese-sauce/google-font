@@ -39,7 +39,7 @@ module.exports = {
                     .then(function (response) {
                         // handle success
 
-                        this.fontList = response;
+                        this.fontList = {...response};
                         console.log(this.fontList);
                     })
                     .catch(function (error) {
