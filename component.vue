@@ -37,8 +37,9 @@ module.exports = {
         node_modules['axios'].get(`https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyC_RgpPbpNDPSSaBHXMr5XkzKgCm4S9Bys`)
             .then(function (response) {
                 // handle success
-                console.log(response.data.items);
+
                 this.fontList = response.data.items;
+                console.log(this.fontList);
             })
             .catch(function (error) {
                 // handle error
