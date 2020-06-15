@@ -9,9 +9,9 @@
                     :md-options="fonts"
                     @md-changed="getFonts"
                     @md-opened="getFonts"
+                    :md-fuzzy-search="false"
                     md-dense
             >
-                <label>Search...</label>
                 <template slot="md-autocomplete-item" slot-scope="{ item }">{{ item.family }}</template>
             </md-autocomplete>
         </md-field>
