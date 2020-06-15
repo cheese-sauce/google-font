@@ -18,7 +18,7 @@
 
 <script>
 
-import {getFonts} from "./font.service";
+
 
 module.exports = {
     props: {
@@ -33,6 +33,7 @@ module.exports = {
        fonts: [],
     }),
     mounted: function() {
+        import {getFonts} from "./font.service";
         this.fontList = getFonts();
     },
     methods: {
