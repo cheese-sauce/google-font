@@ -21,6 +21,8 @@
 
 
 
+import {getFonts} from "./font.service";
+
 module.exports = {
     props: {
         value: {
@@ -33,7 +35,7 @@ module.exports = {
        fontList: [],
        fonts: [],
     }),
-    mounted: function() {
+/*    mounted: function() {
         node_modules['axios'].get(`https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyC_RgpPbpNDPSSaBHXMr5XkzKgCm4S9Bys`)
             .then(function (response) {
                 // handle success
@@ -48,9 +50,13 @@ module.exports = {
             .finally(function () {
                 // always executed
             });
-    },
+    },*/
     methods: {
-        getFonts (searchTerm) {
+        async getFonts (searchTerm) {
+            console.log(this);
+            if (!this.fontList) {
+                await this.fontList = getFonts();
+            }
             console.log(this.fontList);
             this.fonts = new Promise(resolve => {
                 if (!searchTerm) {
