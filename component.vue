@@ -39,7 +39,7 @@ module.exports = {
                     .then(function (response) {
                         // handle success
                         response.data.items.forEach((value) => {
-                            this.fontList.add(value);
+                            fontList.add(value);
                         });
                         console.log(this.fontList);
                     })
