@@ -33,8 +33,19 @@ module.exports = {
        fonts: [],
     }),
     mounted: function() {
-        import {getFonts} from "./font.service";
-        this.fontList = getFonts();
+        this.fontList = node_modules['axios'].get(`https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyC_RgpPbpNDPSSaBHXMr5XkzKgCm4S9Bys`)
+            .then(function (response) {
+                // handle success
+                console.log(response);
+                this.fontList = response.data.items;
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+            .finally(function () {
+                // always executed
+            });
     },
     methods: {
         getFonts (searchTerm) {
