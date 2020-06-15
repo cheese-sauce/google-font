@@ -27,10 +27,10 @@ module.exports = {
         },
         meta: Object,
     },
-    data: {
+    data: () => ({
        fontList: undefined,
        fonts: [],
-    },
+    }),
     methods: {
         async getFonts (searchTerm) {
             if (!this.fontList) {
