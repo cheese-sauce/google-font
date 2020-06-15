@@ -28,12 +28,12 @@ module.exports = {
         meta: Object,
     },
     data: () => ({
-       fontList: undefined,
+       fontList: [],
        fonts: [],
     }),
     methods: {
         async getFonts (searchTerm) {
-            if (!this.fontList) {
+            if (!this.fontList.length) {
                 console.log('getting fonts');
                 await node_modules['axios'].get(`https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyC_RgpPbpNDPSSaBHXMr5XkzKgCm4S9Bys`)
                     .then(function (response) {
